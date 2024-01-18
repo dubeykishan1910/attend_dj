@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Welcome to the Attendance App</h1>
+                <form method="post" action="{% url 'start_attendance' %}">
+                    {% csrf_token %}
+                    <button type="submit">Start</button>
+                </form>
+                <form method="post" action="{% url 'end_attendance' %}">
+                    {% csrf_token %}
+                    <button type="submit">End</button>
+                </form>
+                <a href="{% url 'calculate_working_hours' %}">View Total Working Hours</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
