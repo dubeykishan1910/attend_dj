@@ -8,4 +8,4 @@ class AttendanceEntry(models.Model):
     exit_time = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-        return str(self.exit_time)
+        return f"  {self.user}  {self.exit_time}"

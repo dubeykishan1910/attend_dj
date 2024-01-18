@@ -4,8 +4,11 @@ from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .models import AttendanceEntry
 
+@login_required
 def home(request):
-    return render(request, 'home.html')
+    # Check if there is an active entry in progress
+    entry_in_progress = AttendanceEntry.objects.filter(user=request.user, exit_time__isnull=True).exists()
+    return render(request, 'home.html', {'entry_in_progress': entry_in_progress})
 
 @login_required
 def start_attendance(request):
